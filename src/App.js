@@ -8,17 +8,26 @@ const App = () => {
   const APP_KEY = '30b97669ea8643014a5967d0e402ba50';
 
   const EXAMPLE_REQ = 
-  `https://api.edamam.com/search?q=chicken&app_id=${APP_ID}&app_key=${APP_KEY}`;
+  `https://api.edamam.com/search?q=vegan&app_id=${APP_ID}&app_key=${APP_KEY}`;
 
   {/* The State Hook */}
   const [counter, setCounter] = useState(0);
 
   {/* The Effect Hook lets you perform side effects in function components.*/}
-  {/*The second parameter (the empty brackets) keeps useEffect from running every single time our page re-renders */}
-
-  useEffect(() => {
-    console.log("Effect has been run once!");
+  {/* The second parameter (the empty brackets) keeps useEffect from running every single time our page re-renders */}
+  {/* useEffect will run everytime something in the brackets changes. [counter] means it will run every time counter changes */}
+  useEffect(  () => {
+    getRecipes();
   }, []);
+
+  {/* An asynchronous call allows following code to be executed immediately without waiting */}
+  {/* The 'await' operator is used to wait for a Promise. It can only be used inside an async function */}
+  {/* The 'fetch' method retrieves data from a URL. There are many options. */}
+  const getRecipes = async () => {
+    const response = await fetch(`https://api.edamam.com/search?q=vegan&app_id=${APP_ID}&app_key=${APP_KEY}`);
+    const data = await response.json();
+    console.log(data);
+  };
 
   return(
     <div className="app">
