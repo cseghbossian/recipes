@@ -14,33 +14,44 @@ const App = () => {
   {/* The State Hook lets you make a state (variable) and update it*/}
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState("");
+  const [query, setQuery] = useState("vegan");
 
   {/* The Effect Hook lets you perform side effects in function components.*/}
-  {/* The second parameter (the empty brackets) keeps useEffect from running every single time our page re-renders */}
-  {/* useEffect will run everytime something in the brackets changes. [counter] means it will run every time counter changes */}
+  {/* useEffect will run everytime something in the brackets changes. [query] means it will run every time query changes */}  
+  {/* Empty brackets woule make useEffect run only once when loading page */}
   useEffect(  () => {
     getRecipes();
-  }, []);
+  }, [query]);
 
   {/* An asynchronous call allows following code to be executed immediately without waiting */}
   {/* The 'await' operator is used to wait for a Promise. It can only be used inside an async function */}
   {/* The 'fetch' method retrieves data from a URL. There are many options. */}
   const getRecipes = async () => {
-    const response = await fetch(`https://api.edamam.com/search?q=vegan&app_id=${APP_ID}&app_key=${APP_KEY}`);
+    const response = await fetch(`https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`);
     const data = await response.json();
     setRecipes(data.hits);
     console.log(data.hits);
   };
 
   {/* The 'e' means Event! In this case, the event is typing in the search box. We pass the event as a prop to updateSearch */}
+  {/* This method updates search for every new char written. */}
   const updateSearch = e => {
     setSearch(e.target.value);
+  }
+
+  {/* This method runs everytime our search form is submitted so the query is only updated when pressing the search button */}
+  {/* preventDefault keeps the page from reloading */}
+  {/* We setSearch back to empty string so the search box is empty after loading new recipes */}
+  const getSearch = e => {
+    e.preventDefault();
+    setQuery(search);
+    setSearch('');
   }
 
   return(
     <div className="app">
       {/* We assign a className to each HTML element */}
-      <form className="search-form">
+      <form className="search-form" onSubmit={getSearch}>
         <input className="search-bar" type='text' value={search} onChange={updateSearch}/>
         <button className="search-button" type='Submit'>Search Recipes</button>
       </form>
