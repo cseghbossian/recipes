@@ -28,6 +28,7 @@ const App = () => {
     const response = await fetch(`https://api.edamam.com/search?q=vegan&app_id=${APP_ID}&app_key=${APP_KEY}`);
     const data = await response.json();
     setRecipes(data.hits);
+    console.log(data.hits);
   };
 
   return(
@@ -37,13 +38,16 @@ const App = () => {
         <input className="search-bar" type='text'/>
         <button className="search-button" type='Submit'>Search Recipes</button>
       </form>
-      {
-        recipes.map(recipe => (
-          <Recipe />
-        ))
-      }
+        {/* For title={recipe.recipe.label}, the first recipe refers to one recipe in the recipes array. */}
+        {/* The second .recipe and .label are from the JSON tree called data.hits */}
+        { recipes.map(recipe => (
+          <Recipe title={recipe.recipe.label} calories={recipe.recipe.calories}
+          image={recipe.recipe.image}
+          />
+        ))}
     </div>
   );
+
 }
 
 export default App;
