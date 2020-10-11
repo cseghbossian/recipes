@@ -10,8 +10,8 @@ const App = () => {
   const EXAMPLE_REQ = 
   `https://api.edamam.com/search?q=vegan&app_id=${APP_ID}&app_key=${APP_KEY}`;
 
-  {/* The State Hook */}
-  const [counter, setCounter] = useState(0);
+  {/* The State Hook lets you make a state (variable) and update it*/}
+  const [Recipes, setRecipes] = useState([]);
 
   {/* The Effect Hook lets you perform side effects in function components.*/}
   {/* The second parameter (the empty brackets) keeps useEffect from running every single time our page re-renders */}
@@ -26,7 +26,7 @@ const App = () => {
   const getRecipes = async () => {
     const response = await fetch(`https://api.edamam.com/search?q=vegan&app_id=${APP_ID}&app_key=${APP_KEY}`);
     const data = await response.json();
-    console.log(data);
+    setRecipes(data.hits);
   };
 
   return(
