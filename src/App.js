@@ -49,7 +49,7 @@ const App = () => {
   }
 
   return(
-    <div className="app">
+    <div className="App">
       {/* We assign a className to each HTML element */}
       <form className="search-form" onSubmit={getSearch}>
         <input className="search-bar" type='text' value={search} onChange={updateSearch}/>
@@ -62,8 +62,9 @@ const App = () => {
           <Recipe 
           key={recipe.recipe.label}
           title={recipe.recipe.label} 
-          calories={recipe.recipe.calories}
+          calories={Math.round(recipe.recipe.calories / recipe.recipe.yield)}
           image={recipe.recipe.image}
+          ingredients={recipe.recipe.ingredients}
           />
         ))}
     </div>
