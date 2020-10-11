@@ -1,6 +1,7 @@
 .app {
   text-align: center;
   min-height: 100vh;
+  /* gradient found at https://webgradients.com/ */
   background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
 }
 

@@ -1,11 +1,11 @@
 import React from 'react'; 
-
+import style from './Recipe.module.css';
 
 
 {/* The arrow function simply allows you to write functions with a shorter syntax */}
 const Recipe = ({title, calories, image, ingredients}) => {
   return(
-    <div className='Recipe'>
+    <div className={style.recipe}>
       <h1>{title}</h1>
       <p>{calories} Calories per serving</p>
       <ul>
@@ -13,7 +13,7 @@ const Recipe = ({title, calories, image, ingredients}) => {
           <li>{ingredient.text}</li>
         ))}
       </ul>
-      <img src={image} alt=""/>
+      <img className={style.image}src={image} alt=""/>
 
     </div>
   );

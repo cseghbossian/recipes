@@ -1,0 +1,18 @@
+/* A CSS module allows us to apply a style to a single component. They are designed to fix the problem of the global scope in CSS. */
+
+.recipe {
+  border-radius: 10px;
+  box-shadow: 0px 5px 20px #505050;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background: white;
+  align-items: center;
+  width: 40%;
+}
+
+.image {
+  width: 200px;
+  height: 200px;
+}
