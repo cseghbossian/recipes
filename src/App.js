@@ -13,6 +13,7 @@ const App = () => {
 
   {/* The State Hook lets you make a state (variable) and update it*/}
   const [recipes, setRecipes] = useState([]);
+  const [search, setSearch] = useState("");
 
   {/* The Effect Hook lets you perform side effects in function components.*/}
   {/* The second parameter (the empty brackets) keeps useEffect from running every single time our page re-renders */}
@@ -31,11 +32,16 @@ const App = () => {
     console.log(data.hits);
   };
 
+  {/* The 'e' means Event! In this case, the event is typing in the search box. We pass the event as a prop to updateSearch */}
+  const updateSearch = e => {
+    setSearch(e.target.value);
+  }
+
   return(
     <div className="app">
       {/* We assign a className to each HTML element */}
       <form className="search-form">
-        <input className="search-bar" type='text'/>
+        <input className="search-bar" type='text' value={search} onChange={updateSearch}/>
         <button className="search-button" type='Submit'>Search Recipes</button>
       </form>
         {/* For title={recipe.recipe.label}, the first recipe refers to one recipe in the recipes array. */}
