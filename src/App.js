@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import Recipe from './Recipe.js';
+import Recipe from './Recipe';
 import logo from './logo.svg';
 import './App.css';
 
@@ -12,7 +12,7 @@ const App = () => {
   `https://api.edamam.com/search?q=vegan&app_id=${APP_ID}&app_key=${APP_KEY}`;
 
   {/* The State Hook lets you make a state (variable) and update it*/}
-  const [Recipes, setRecipes] = useState([]);
+  const [recipes, setRecipes] = useState([]);
 
   {/* The Effect Hook lets you perform side effects in function components.*/}
   {/* The second parameter (the empty brackets) keeps useEffect from running every single time our page re-renders */}
@@ -37,7 +37,11 @@ const App = () => {
         <input className="search-bar" type='text'/>
         <button className="search-button" type='Submit'>Search Recipes</button>
       </form>
-      <h2 onClick = {() => setCounter(counter+1)}>{counter}</h2>
+      {
+        recipes.map(recipe => (
+          <Recipe />
+        ))
+      }
     </div>
   );
 }
