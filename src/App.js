@@ -49,7 +49,7 @@ const App = () => {
   }
 
   return(
-    <div className="App">
+    <div className="app">
       {/* We assign a className to each HTML element */}
       <form className="search-form" onSubmit={getSearch}>
         <input className="search-bar" type='text' value={search} onChange={updateSearch}/>
@@ -58,15 +58,17 @@ const App = () => {
         {/* For title={recipe.recipe.label}, the first recipe refers to one recipe in the recipes array. */}
         {/* The second .recipe and .label are from the JSON tree called data.hits */}
         {/* We include a unique key for each recipe to improve performance */}
-        { recipes.map(recipe => (
-          <Recipe 
-          key={recipe.recipe.label}
-          title={recipe.recipe.label} 
-          calories={Math.round(recipe.recipe.calories / recipe.recipe.yield)}
-          image={recipe.recipe.image}
-          ingredients={recipe.recipe.ingredients}
-          />
-        ))}
+        <div className="recipes">
+          {recipes.map(recipe => (
+            <Recipe 
+            key={recipe.recipe.label}
+            title={recipe.recipe.label} 
+            calories={Math.round(recipe.recipe.calories / recipe.recipe.yield/5)*5}
+            image={recipe.recipe.image}
+            ingredients={recipe.recipe.ingredients}
+            />
+          ))}
+        </div>
     </div>
   );
 
