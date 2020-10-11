@@ -40,8 +40,12 @@ const App = () => {
       </form>
         {/* For title={recipe.recipe.label}, the first recipe refers to one recipe in the recipes array. */}
         {/* The second .recipe and .label are from the JSON tree called data.hits */}
+        {/* We include a unique key for each recipe to improve performance */}
         { recipes.map(recipe => (
-          <Recipe title={recipe.recipe.label} calories={recipe.recipe.calories}
+          <Recipe 
+          key={recipe.recipe.label}
+          title={recipe.recipe.label} 
+          calories={recipe.recipe.calories}
           image={recipe.recipe.image}
           />
         ))}
