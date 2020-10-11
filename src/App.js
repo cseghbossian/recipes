@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import Recipe from './Recipe.js';
 import logo from './logo.svg';
 import './App.css';
 
