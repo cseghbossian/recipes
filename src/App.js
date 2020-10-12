@@ -53,7 +53,7 @@ const App = () => {
       {/* We assign a className to each HTML element */}
       <form className="search-form" onSubmit={getSearch}>
         <input className="search-bar" type='text' value={search} onChange={updateSearch}/>
-        <button className="search-button" type='Submit'>Search Recipes</button>
+        <button className="search-button" type='Submit'>Search</button>
       </form>
         {/* For title={recipe.recipe.label}, the first recipe refers to one recipe in the recipes array. */}
         {/* The second .recipe and .label are from the JSON tree called data.hits */}
