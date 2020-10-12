@@ -2,7 +2,7 @@
 
 .recipe {
   border-radius: 10px;
-  box-shadow: 0px 5px 20px #505050;
+  box-shadow: 0px 5px 20px #9b9b9b;
   margin: 20px;
   display: flex;
   flex-direction: column;
@@ -14,5 +14,12 @@
 
 .image {
   width: 200px;
-  height: 200px;
+}
+
+.ingredients {
+  list-style-type: none; 
+  border-radius: 10px;
+  background: white;
+  text-align: left;
+  margin: 10px;
 }

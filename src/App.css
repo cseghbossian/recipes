@@ -13,7 +13,7 @@
 }
 
 .search-bar {
-  width: 50%;
+  width: 80%;
   border: none;
   padding: 10px;
 }
@@ -27,6 +27,6 @@
 
 .recipes {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   flex-wrap: wrap;
 }
